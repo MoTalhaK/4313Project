@@ -1,0 +1,33 @@
+                                                                     Precision  Recall  F1-Score
+
+Criterion = gini | n_estimators = 5 | Max features = None | Max depth = 1 |  0.6 |  0.72 |  0.63
+
+
+Criterion = gini | n_estimators = 5 | Max features = None | Max depth = 2 |  0.71 |  0.73 |  0.64
+
+
+Criterion = gini | n_estimators = 5 | Max features = None | Max depth = 5 |  0.71 |  0.72 |  0.66
+
+
+Criterion = gini | n_estimators = 5 | Max features = None | Max depth = 8 |  0.7 |  0.71 |  0.67
+
+
+Criterion = gini | n_estimators = 5 | Max features = None | Max depth = 10 |  0.69 |  0.72 |  0.68
+
+
+Criterion = gini | n_estimators = 5 | Max features = None | Max depth = 20 |  0.7 |  0.72 |  0.68
+
+
+Criterion = gini | n_estimators = 5 | Max features = None | Max depth = 30 |  0.7 |  0.72 |  0.68
+
+
+Criterion = gini | n_estimators = 5 | Max features = None | Max depth = 50 |  0.7 |  0.72 |  0.67
+
+
+Criterion = gini | n_estimators = 5 | Max features = None | Max depth = 80 |  0.69 |  0.71 |  0.67
+
+
+Criterion = gini | n_estimators = 5 | Max features = None | Max depth = 100 |  0.69 |  0.71 |  0.68
+
+
+0.68

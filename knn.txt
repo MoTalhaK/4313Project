@@ -1,0 +1,63 @@
+                                                                     Precision  Recall  F1-Score
+
+Average precision, recall, and f1-score across all the data sets
+
+
+Neighbors = 1 |  Algorithm = auto |  Weights = uniform |  0.66 |  0.71 |  0.67
+
+
+Average precision, recall, and f1-score across all the data sets
+
+
+Neighbors = 2 |  Algorithm = auto |  Weights = uniform |  0.68 |  0.72 |  0.64
+
+
+Average precision, recall, and f1-score across all the data sets
+
+
+Neighbors = 5 |  Algorithm = auto |  Weights = uniform |  0.67 |  0.72 |  0.65
+
+
+Average precision, recall, and f1-score across all the data sets
+
+
+Neighbors = 8 |  Algorithm = auto |  Weights = uniform |  0.68 |  0.72 |  0.64
+
+
+Average precision, recall, and f1-score across all the data sets
+
+
+Neighbors = 10 |  Algorithm = auto |  Weights = uniform |  0.63 |  0.72 |  0.64
+
+
+Average precision, recall, and f1-score across all the data sets
+
+
+Neighbors = 20 |  Algorithm = auto |  Weights = uniform |  0.62 |  0.72 |  0.64
+
+
+Average precision, recall, and f1-score across all the data sets
+
+
+Neighbors = 30 |  Algorithm = auto |  Weights = uniform |  0.61 |  0.73 |  0.63
+
+
+Average precision, recall, and f1-score across all the data sets
+
+
+Neighbors = 50 |  Algorithm = auto |  Weights = uniform |  0.58 |  0.72 |  0.63
+
+
+Average precision, recall, and f1-score across all the data sets
+
+
+Neighbors = 80 |  Algorithm = auto |  Weights = uniform |  0.58 |  0.72 |  0.62
+
+
+Average precision, recall, and f1-score across all the data sets
+
+
+Neighbors = 100 |  Algorithm = auto |  Weights = uniform |  0.56 |  0.72 |  0.62
+
+
+0.67
