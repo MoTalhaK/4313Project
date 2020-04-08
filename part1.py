@@ -1,28 +1,36 @@
-import numpy as np
-import csv as csv
 import pandas as pd
+import bow
 from sklearn.naive_bayes import GaussianNB
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import precision_recall_fscore_support
-from sklearn.metrics import classification_report
-from sklearn.metrics import f1_score
-from sklearn.metrics import precision_score
-from sklearn.metrics import recall_score
+from sklearn.metrics import confusion_matrix
+from sklearn.pipeline import Pipeline, FeatureUnion
+from sklearn.preprocessing import FunctionTransformer
 
-f1_avg, p_avg, r_avg = 0, 0, 0
-avg_f1_all, avg_p_all, avg_r_all = 0, 0, 0
-precision_avg = 0
-recall_avg = 0
 f1_list = []  # list for f1-scores
 p_list = []  # list for precision
 r_list = []  # list for recall
 
+tp_list = []
+fp_list = []
+fn_list = []
+tn_list = []
+
+num_if = []
+
+
+def get_if(data):
+    for x in data:
+        num_if.append(x[1])
+
+
+def get_for(data):
+    for x in data:
+        num_if.append(x[2])
+
 
 def learn(file_train, file_test):
     global f1_list, p_list, r_list
-    f1_num = 0
-    p_num = 0
-    r_num = 0
+    global tp_list, fp_list, fn_list, tn_list
+
     # load the training data as a matrix
     dataset = pd.read_csv(file_train, header=0)
 
@@ -52,16 +60,28 @@ def learn(file_train, file_test):
     test_target = dataset2.iloc[:, -1]
 
     gnb = GaussianNB()
-    test_pred = gnb.fit(train_data, train_target).predict(test_data)
+    # classifier = Pipeline([
+    #     ("features", FeatureUnion([
+    #         ("num_if", Pipeline([
+    #             ("count", FunctionTransformer(get_if, validate=False)),
+    #         ])),
+    #         ("num_for", Pipeline([
+    #             ("count", FunctionTransformer(get_for, validate=False)),
+    #         ]))
+    #     ])),
+    #     ("clf", GaussianNB())])
 
-    print(classification_report(test_target, test_pred, labels=[0, 1]))
-    # print(round(f1_score(test_target, test_pred, labels=[0, 1], average='weighted'), 2))
-    f1_num = round(f1_score(test_target, test_pred, labels=[0, 1], average='weighted'), 2)
-    p_num = round(precision_score(test_target, test_pred, labels=[0, 1], average='weighted'), 2)
-    r_num = round(recall_score(test_target, test_pred, labels=[0, 1], average='weighted'), 2)
-    f1_list.append(f1_num)
-    p_list.append(p_num)
-    r_list.append(r_num)
+    test_pred = gnb.fit(train_data, train_target).predict(test_data)
+    conf_matrix = confusion_matrix(test_target, test_pred, labels=[0, 1])
+    TP = conf_matrix[0][0]
+    FP = conf_matrix[0][1]
+    FN = conf_matrix[1][0]
+    TN = conf_matrix[1][1]
+
+    tp_list.append(TP)
+    fp_list.append(FP)
+    fn_list.append(FN)
+    tn_list.append(TN)
 
 
 # jackrabbit
@@ -70,22 +90,24 @@ for i in range(0, 6):
     learn("./data/jackrabbit/" + str(i) + "/train.csv", "./data/jackrabbit/" + str(i) + "/test.csv")
 
 print("Average precision, recall, and f1-score for 'jackrabbit'\n")
-# average f1-score, precision, and recall for "jackrabbit" project
-f1_avg = sum(f1_list) / len(f1_list)
-p_avg = sum(p_list) / len(p_list)
-r_avg = sum(r_list) / len(r_list)
-print("F1-Score =", round(f1_avg, 2))
-print("Precision =", round(p_avg, 2))
-print("Recall =", round(r_avg, 2))
-avg_f1_all = avg_f1_all + f1_avg
-avg_p_all = avg_p_all + p_avg
-avg_r_all = avg_r_all + r_avg
-print(f1_list)
 
-f1_avg, p_avg, r_avg = 0, 0, 0
-f1_list = []  # list for f1-scores
-p_list = []  # list for precision
-r_list = []  # list for recall
+total_tp = sum(tp_list)
+total_fp = sum(fp_list)
+total_fn = sum(fn_list)
+total_tn = sum(tn_list)
+
+precision = total_tp / (total_tp + total_fp)
+recall = total_tp / (total_tp + total_fn)
+F1 = (2 * precision * recall) / (precision + recall)
+print("F1-Score =", round(F1, 2))
+f1_list.append(F1)
+p_list.append(precision)
+r_list.append(recall)
+
+tp_list.clear()
+fp_list.clear()
+fn_list.clear()
+tn_list.clear()
 
 # jdt
 for i in range(0, 6):
@@ -93,22 +115,24 @@ for i in range(0, 6):
     learn("./data/jdt/" + str(i) + "/train.csv", "./data/jdt/" + str(i) + "/test.csv")
 
 print("\nAverage precision, recall, and f1-score for 'jdt'\n")
-# average f1-score, precision, and recall for "jdt" project
-f1_avg = sum(f1_list) / len(f1_list)
-p_avg = sum(p_list) / len(p_list)
-r_avg = sum(r_list) / len(r_list)
-print("F1-Score =", round(f1_avg, 2))
-print("Precision =", round(p_avg, 2))
-print("Recall =", round(r_avg, 2))
-avg_f1_all = avg_f1_all + f1_avg
-avg_p_all = avg_p_all + p_avg
-avg_r_all = avg_r_all + r_avg
-print(f1_list)
 
-f1_avg, p_avg, r_avg = 0, 0, 0
-f1_list = []  # list for f1-scores
-p_list = []  # list for precision
-r_list = []  # list for recall
+total_tp = sum(tp_list)
+total_fp = sum(fp_list)
+total_fn = sum(fn_list)
+total_tn = sum(tn_list)
+
+precision = total_tp / (total_tp + total_fp)
+recall = total_tp / (total_tp + total_fn)
+F1 = (2 * precision * recall) / (precision + recall)
+print("F1-Score =", round(F1, 2))
+f1_list.append(F1)
+p_list.append(precision)
+r_list.append(recall)
+
+tp_list.clear()
+fp_list.clear()
+fn_list.clear()
+tn_list.clear()
 
 # lucene
 for i in range(0, 6):
@@ -116,22 +140,24 @@ for i in range(0, 6):
     learn("./data/lucene/" + str(i) + "/train.csv", "./data/lucene/" + str(i) + "/test.csv")
 
 print("\nAverage precision, recall, and f1-score for 'lucene'\n")
-# average f1-score, precision, and recall for "lucene" project
-f1_avg = sum(f1_list) / len(f1_list)
-p_avg = sum(p_list) / len(p_list)
-r_avg = sum(r_list) / len(r_list)
-print("F1-Score =", round(f1_avg, 2))
-print("Precision =", round(p_avg, 2))
-print("Recall =", round(r_avg, 2))
-avg_f1_all = avg_f1_all + f1_avg
-avg_p_all = avg_p_all + p_avg
-avg_r_all = avg_r_all + r_avg
-print(f1_list)
 
-f1_avg, p_avg, r_avg = 0, 0, 0
-f1_list = []  # list for f1-scores
-p_list = []  # list for precision
-r_list = []  # list for recall
+total_tp = sum(tp_list)
+total_fp = sum(fp_list)
+total_fn = sum(fn_list)
+total_tn = sum(tn_list)
+
+precision = total_tp / (total_tp + total_fp)
+recall = total_tp / (total_tp + total_fn)
+F1 = (2 * precision * recall) / (precision + recall)
+print("F1-Score =", round(F1, 2))
+f1_list.append(F1)
+p_list.append(precision)
+r_list.append(recall)
+
+tp_list.clear()
+fp_list.clear()
+fn_list.clear()
+tn_list.clear()
 
 # xorg
 for i in range(0, 6):
@@ -139,29 +165,22 @@ for i in range(0, 6):
     learn("./data/xorg/" + str(i) + "/train.csv", "./data/xorg/" + str(i) + "/test.csv")
 
 print("\nAverage precision, recall, and f1-score for 'xorg'\n")
-# average f1-score, precision, and recall for "xorg" project
-f1_avg = sum(f1_list) / len(f1_list)
-p_avg = sum(p_list) / len(p_list)
-r_avg = sum(r_list) / len(r_list)
-print("F1-Score =", round(f1_avg, 2))
-print("Precision =", round(p_avg, 2))
-print("Recall =", round(r_avg, 2))
-avg_f1_all = avg_f1_all + f1_avg
-avg_p_all = avg_p_all + p_avg
-avg_r_all = avg_r_all + r_avg
-print(f1_list)
 
-f1_avg, p_avg, r_avg = 0, 0, 0
-f1_list = []  # list for f1-scores
-p_list = []  # list for precision
-r_list = []  # list for recall
+total_tp = sum(tp_list)
+total_fp = sum(fp_list)
+total_fn = sum(fn_list)
+total_tn = sum(tn_list)
 
-print("\nAverage precision, recall, and f1-score across all the data sets\n")
-avg_f1_all = (avg_f1_all / 4)
-avg_p_all = (avg_p_all / 4)
-avg_r_all = (avg_r_all / 4)
-print("F1-Score =", round(avg_f1_all, 2))
-print("Precision =", round(avg_p_all, 2))
-print("Recall =", round(avg_r_all, 2))
+precision = total_tp / (total_tp + total_fp)
+recall = total_tp / (total_tp + total_fn)
+F1 = (2 * precision * recall) / (precision + recall)
+print("F1-Score =", round(F1, 2))
+f1_list.append(F1)
+p_list.append(precision)
+r_list.append(recall)
 
+tp_list.clear()
+fp_list.clear()
+fn_list.clear()
+tn_list.clear()
 print(f1_list)

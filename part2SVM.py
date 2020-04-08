@@ -1,32 +1,19 @@
-import sys
 import pandas as pd
 import docx
 from sklearn.svm import SVC
-from sklearn.metrics import f1_score
-from sklearn.metrics import precision_score
-from sklearn.metrics import recall_score
+from sklearn.metrics import confusion_matrix
 
-f = open('knn_p_val.txt', 'w')
-sys.stdout = f
-f1_avg, p_avg, r_avg = 0, 0, 0
-# warnings.filterwarnings("ignore")
-precision_avg = 0
-recall_avg = 0
 f1_list = []  # list for f1-scores
 p_list = []  # list for precision
 r_list = []  # list for recall
-avg_f1_all_list = []
-avg_p_all_list = []
-avg_r_all_list = []
-curr = 0
+
+tp_list = []
+fp_list = []
+fn_list = []
+tn_list = []
 
 
 def learn_dt(file_train, file_test, C, class_weight, max_iter, random_state):
-    global f1_list, p_list, r_list
-
-    f1_num = 0
-    p_num = 0
-    r_num = 0
     # load the training data as a matrix
     dataset = pd.read_csv(file_train, header=0)
 
@@ -54,103 +41,123 @@ def learn_dt(file_train, file_test, C, class_weight, max_iter, random_state):
 
     # the lables of test data
     test_target = dataset2.iloc[:, -1]
-
     svc = SVC(C=C, class_weight=class_weight, max_iter=max_iter, random_state=random_state)
-
     test_pred = svc.fit(train_data, train_target).predict(test_data)
-    f1_num = round(f1_score(test_target, test_pred, labels=[0, 1], average='weighted'), 2)
-    # print(f1_num)
-    p_num = round(precision_score(test_target, test_pred, labels=[0, 1], average='weighted'), 2)
-    r_num = round(recall_score(test_target, test_pred, labels=[0, 1], average='weighted'), 2)
-    f1_list.append(f1_num)
-    p_list.append(p_num)
-    r_list.append(r_num)
+
+    conf_matrix = confusion_matrix(test_target, test_pred, labels=[0, 1])
+    TP = conf_matrix[0][0]
+    FP = conf_matrix[0][1]
+    FN = conf_matrix[1][0]
+    TN = conf_matrix[1][1]
+    tp_list.append(TP)
+    fp_list.append(FP)
+    fn_list.append(FN)
+    tn_list.append(TN)
 
 
-def param_test(c_val, c_w, max_i):
-    global avg_f1_all_list, avg_p_all_list, avg_r_all_list
-    avg_f1_all, avg_p_all, avg_r_all = 0, 0, 0
-    global f1_avg, p_avg, r_avg
-    global curr
+# c_val, c_w, max_i
+def param_test_jr(c_val, c_w, max_i):
     # jackrabbit
     for i in range(0, 6):
         learn_dt("./data/jackrabbit/" + str(i) + "/train.csv", "./data/jackrabbit/" + str(i) + "/test.csv",
-                 C=c_val, class_weight=c_w, max_iter=max_i, random_state=32)
+                 C=c_val, class_weight=c_w, max_iter=max_i, random_state=45)
 
-    f1_avg = sum(f1_list) / len(f1_list)
-    p_avg = sum(p_list) / len(p_list)
-    r_avg = sum(r_list) / len(r_list)
+    total_tp = sum(tp_list)
+    total_fp = sum(fp_list)
+    total_fn = sum(fn_list)
+    total_tn = sum(tn_list)
 
-    avg_f1_all = avg_f1_all + f1_avg
-    avg_p_all = avg_p_all + p_avg
-    avg_r_all = avg_r_all + r_avg
+    precision = total_tp / (total_tp + total_fp)
+    recall = total_tp / (total_tp + total_fn)
+    F1 = (2 * precision * recall) / (precision + recall)
+    print("...")
 
-    f1_avg, p_avg, r_avg = 0, 0, 0
-    f1_list.clear()
-    p_list.clear()
-    r_list.clear()
+    f1_list.append(round(F1, 2))
+    p_list.append(round(precision, 2))
+    r_list.append(round(recall, 2))
 
+    tp_list.clear()
+    fp_list.clear()
+    fn_list.clear()
+    tn_list.clear()
+
+
+def param_test_jdt(c_val, c_w, max_i):
     # jdt
     for i in range(0, 6):
         learn_dt("./data/jdt/" + str(i) + "/train.csv", "./data/jdt/" + str(i) + "/test.csv",
-                 C=c_val, class_weight=c_w, max_iter=max_i, random_state=32)
+                 C=c_val, class_weight=c_w, max_iter=max_i, random_state=45)
 
-    f1_avg = sum(f1_list) / len(f1_list)
-    p_avg = sum(p_list) / len(p_list)
-    r_avg = sum(r_list) / len(r_list)
+    total_tp = sum(tp_list)
+    total_fp = sum(fp_list)
+    total_fn = sum(fn_list)
+    total_tn = sum(tn_list)
 
-    avg_f1_all = avg_f1_all + f1_avg
-    avg_p_all = avg_p_all + p_avg
-    avg_r_all = avg_r_all + r_avg
+    precision = total_tp / (total_tp + total_fp)
+    recall = total_tp / (total_tp + total_fn)
+    F1 = (2 * precision * recall) / (precision + recall)
+    print("...")
 
-    f1_avg, p_avg, r_avg = 0, 0, 0
-    f1_list.clear()
-    p_list.clear()
-    r_list.clear()
+    f1_list.append(round(F1, 2))
+    p_list.append(round(precision, 2))
+    r_list.append(round(recall, 2))
 
+    tp_list.clear()
+    fp_list.clear()
+    fn_list.clear()
+    tn_list.clear()
+
+
+def param_test_lucene(c_val, c_w, max_i):
     # lucene
     for i in range(0, 6):
         learn_dt("./data/lucene/" + str(i) + "/train.csv", "./data/lucene/" + str(i) + "/test.csv",
-                 C=c_val, class_weight=c_w, max_iter=max_i, random_state=32)
+                 C=c_val, class_weight=c_w, max_iter=max_i, random_state=45)
 
-    f1_avg = sum(f1_list) / len(f1_list)
-    p_avg = sum(p_list) / len(p_list)
-    r_avg = sum(r_list) / len(r_list)
+    total_tp = sum(tp_list)
+    total_fp = sum(fp_list)
+    total_fn = sum(fn_list)
+    total_tn = sum(tn_list)
 
-    avg_f1_all = avg_f1_all + f1_avg
-    avg_p_all = avg_p_all + p_avg
-    avg_r_all = avg_r_all + r_avg
+    precision = total_tp / (total_tp + total_fp)
+    recall = total_tp / (total_tp + total_fn)
+    F1 = (2 * precision * recall) / (precision + recall)
+    print("...")
 
-    f1_avg, p_avg, r_avg = 0, 0, 0
-    f1_list.clear()
-    p_list.clear()
-    r_list.clear()
+    f1_list.append(round(F1, 2))
+    p_list.append(round(precision, 2))
+    r_list.append(round(recall, 2))
 
+    tp_list.clear()
+    fp_list.clear()
+    fn_list.clear()
+    tn_list.clear()
+
+
+def param_test_xorg(c_val, c_w, max_i):
     # xorg
     for i in range(0, 6):
         learn_dt("./data/xorg/" + str(i) + "/train.csv", "./data/xorg/" + str(i) + "/test.csv",
-                 C=c_val, class_weight=c_w, max_iter=max_i, random_state=32)
+                 C=c_val, class_weight=c_w, max_iter=max_i, random_state=45)
 
-    f1_avg = sum(f1_list) / len(f1_list)
-    p_avg = sum(p_list) / len(p_list)
-    r_avg = sum(r_list) / len(r_list)
+    total_tp = sum(tp_list)
+    total_fp = sum(fp_list)
+    total_fn = sum(fn_list)
+    total_tn = sum(tn_list)
 
-    avg_f1_all = avg_f1_all + f1_avg
-    avg_p_all = avg_p_all + p_avg
-    avg_r_all = avg_r_all + r_avg
+    precision = total_tp / (total_tp + total_fp)
+    recall = total_tp / (total_tp + total_fn)
+    F1 = (2 * precision * recall) / (precision + recall)
+    print("...")
 
-    f1_avg, p_avg, r_avg = 0, 0, 0
-    f1_list.clear()
-    p_list.clear()
-    r_list.clear()
+    f1_list.append(round(F1, 2))
+    p_list.append(round(precision, 2))
+    r_list.append(round(recall, 2))
 
-    avg_f1_all = (avg_f1_all / 4)
-    avg_p_all = (avg_p_all / 4)
-    avg_r_all = (avg_r_all / 4)
-
-    avg_f1_all_list.append(round(avg_f1_all, 2))
-    avg_p_all_list.append(round(avg_p_all, 2))
-    avg_r_all_list.append(round(avg_r_all, 2))
+    tp_list.clear()
+    fp_list.clear()
+    fn_list.clear()
+    tn_list.clear()
 
 
 doc = docx.Document("test.docx")
@@ -172,17 +179,47 @@ def to_doc(d_frame):
 
 n_val = [0.0001, 0.001, 0.01, 0.1, 1, 10, 50, 100, 1000, 10000]
 n_val1 = [100000]
-# for x in n_val:
-#     param_test(x, None, -1)
-# df = pd.DataFrame(list(zip(n_val, avg_p_all_list, avg_r_all_list, avg_f1_all_list)),
-#                   columns=["C", "Precision", "Recall", "F1-Score"])
-# to_doc(df)
-# print(df)
 
-for x in n_val1:
-    param_test(100000, None, -1)
-df = pd.DataFrame(list(zip(n_val1, avg_p_all_list, avg_r_all_list, avg_f1_all_list)),
+print("jackrabbit...\n")
+for x in n_val:
+    param_test_jr(x, None, -1)
+df = pd.DataFrame(list(zip(n_val, p_list, r_list, f1_list)),
                   columns=["C", "Precision", "Recall", "F1-Score"])
 to_doc(df)
-print(df)
-f.close()
+print(df, "\n")
+f1_list.clear()
+p_list.clear()
+r_list.clear()
+
+print("jdt...\n")
+for x in n_val:
+    param_test_jdt(x, None, -1)
+df = pd.DataFrame(list(zip(n_val, p_list, r_list, f1_list)),
+                  columns=["C", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df, "\n")
+f1_list.clear()
+p_list.clear()
+r_list.clear()
+
+print("lucene...\n")
+for x in n_val:
+    param_test_lucene(x, None, -1)
+df = pd.DataFrame(list(zip(n_val, p_list, r_list, f1_list)),
+                  columns=["C", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df, "\n")
+f1_list.clear()
+p_list.clear()
+r_list.clear()
+
+print("xorg...\n")
+for x in n_val:
+    param_test_xorg(x, None, -1)
+df = pd.DataFrame(list(zip(n_val, p_list, r_list, f1_list)),
+                  columns=["C", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df, "\n")
+f1_list.clear()
+p_list.clear()
+r_list.clear()
