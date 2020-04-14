@@ -143,6 +143,7 @@ def process_docs(directory, data, vocab):
             lines.append(line)
     return lines
 
+
 vocab_filename = "vocab.txt"
 vocab = load_doc(vocab_filename)
 vocab = vocab.split()
@@ -215,9 +216,13 @@ docs_jdt_test = list()
 docs_lucene_test = list()
 docs_xorg_test = list()
 
+# tokenize the output obtained from 'process_docs' and
+# get count of our specified vocabulary (if, for, else, while, switch) and
+# return as a numpy matrix
 def return_matrix(data):
     tokenizer.fit_on_texts(data)
     return tokenizer.texts_to_matrix(data, mode="count")
+
 
 j_train0 = return_matrix(jackrabbit0)
 j_train1 = return_matrix(jackrabbit1)
@@ -332,7 +337,6 @@ xtest3 = pd.read_csv("./data/xorg/3/test.csv")
 xtest4 = pd.read_csv("./data/xorg/4/test.csv")
 xtest5 = pd.read_csv("./data/xorg/5/test.csv")
 
-
 # number of if-statements
 num_if = list()
 num_else = list()
@@ -340,6 +344,9 @@ num_for = list()
 num_while = list()
 num_switch = list()
 
+
+# appened the the counts of 'if', 'for', 'else', 'while', and 'switch'
+# to a new pandas data frame column
 def add_to_csv(data, file):
     # num if
     for x in data:
@@ -362,7 +369,11 @@ def add_to_csv(data, file):
     file["num_else"] = num_else
     file["num_while"] = num_while
     file["num_switch"] = num_switch
-
+    num_if.clear()
+    num_else.clear()
+    num_for.clear()
+    num_while.clear()
+    num_switch.clear()
     return file
 
 
@@ -380,7 +391,7 @@ jtestcsv3 = add_to_csv(j_test3, jrtest3)
 jtestcsv4 = add_to_csv(j_test4, jrtest4)
 jtestcsv5 = add_to_csv(j_test5, jrtest5)
 
-jdtraincsv0 = add_to_csv(jdt_train0, jdtrain1)
+jdtraincsv0 = add_to_csv(jdt_train0, jdtrain0)
 jdtraincsv1 = add_to_csv(jdt_train1, jdtrain1)
 jdtraincsv2 = add_to_csv(jdt_train2, jdtrain2)
 jdtraincsv3 = add_to_csv(jdt_train3, jdtrain3)
@@ -388,18 +399,17 @@ jdtraincsv4 = add_to_csv(jdt_train4, jdtrain4)
 jdtraincsv5 = add_to_csv(jdt_train5, jdtrain5)
 
 jdtestcsv0 = add_to_csv(jdt_test0, jdtest0)
-jdtestcsv1 = add_to_csv(jdt_test0, jdtest0)
-jdtestcsv2 = add_to_csv(jdt_test0, jdtest0)
-jdtestcsv3 = add_to_csv(jdt_test0, jdtest0)
-jdtestcsv4 = add_to_csv(jdt_test0, jdtest0)
-jdtestcsv5 = add_to_csv(jdt_test0, jdtest0)
-
+jdtestcsv1 = add_to_csv(jdt_test1, jdtest1)
+jdtestcsv2 = add_to_csv(jdt_test2, jdtest2)
+jdtestcsv3 = add_to_csv(jdt_test3, jdtest3)
+jdtestcsv4 = add_to_csv(jdt_test4, jdtest4)
+jdtestcsv5 = add_to_csv(jdt_test5, jdtest5)
 
 lucenetraincsv0 = add_to_csv(lucene_train0, luctrain0)
 lucenetraincsv1 = add_to_csv(lucene_train1, luctrain1)
 lucenetraincsv2 = add_to_csv(lucene_train2, luctrain2)
 lucenetraincsv3 = add_to_csv(lucene_train3, luctrain3)
-lucenetraincsv4 = add_to_csv(lucene_train4, luctrain5)
+lucenetraincsv4 = add_to_csv(lucene_train4, luctrain4)
 lucenetraincsv5 = add_to_csv(lucene_train5, luctrain5)
 
 lucenetestcsv0 = add_to_csv(lucene_test0, luctest0)
@@ -423,6 +433,8 @@ xorgtestcsv3 = add_to_csv(xorg_test3, xtest3)
 xorgtestcsv4 = add_to_csv(xorg_test4, xtest4)
 xorgtestcsv5 = add_to_csv(xorg_test5, xtest5)
 
+
+# helper function to output the modified csv files with bag-of-words feature set
 def output_csv(file, fold, flag, type):
     path = ""
     if flag == "jr" and type == "train":
@@ -442,6 +454,7 @@ def output_csv(file, fold, flag, type):
     if flag == "xorg" and type == "test":
         path = "./data/xorg/" + str(fold) + "/test_bow.csv"
     file.to_csv(path, index=False)
+
 
 # we now output the new files for each project which contain the
 # new feature set
@@ -505,94 +518,3 @@ output_csv(xorgtestcsv2, 2, "xorg", "test")
 output_csv(xorgtestcsv3, 3, "xorg", "test")
 output_csv(xorgtestcsv4, 4, "xorg", "test")
 output_csv(xorgtestcsv5, 5, "xorg", "test")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# training data
-# for i in range(0, 6):
-#     docs_rabbit = docs_rabbit + process_docs("./data/jackrabbit/patch", "./data/jackrabbit/" + str(i) + "/train.csv",
-#                                              vocab)
-# for i in range(0, 6):
-#     docs_jdt = docs_jdt + process_docs("./data/jdt/patch", "./data/jdt/" + str(i) + "/train.csv",
-#                                        vocab)
-# for i in range(0, 6):
-#     docs_lucene = docs_lucene + process_docs("./data/lucene/patch", "./data/lucene/" + str(i) + "/train.csv",
-#                                              vocab)
-# for i in range(0, 6):
-#     docs_xorg = docs_xorg + process_docs("./data/xorg/patch", "./data/xorg/" + str(i) + "/train.csv",
-#                                          vocab)
-#
-# # encode training data
-# tokenizer.fit_on_texts(docs_rabbit)
-# rabbit_train = tokenizer.texts_to_matrix(docs_rabbit, mode="count")
-#
-# tokenizer.fit_on_texts(docs_jdt)
-# jdt_train = tokenizer.texts_to_matrix(docs_jdt, mode="count")
-#
-# tokenizer.fit_on_texts(docs_lucene)
-# lucene_train = tokenizer.texts_to_matrix(docs_lucene, mode="count")
-#
-# tokenizer.fit_on_texts(docs_xorg)
-# xorg_train = tokenizer.texts_to_matrix(docs_xorg, mode="count")
-#
-# # test data
-# for i in range(0, 6):
-#     docs_rabbit_test = docs_rabbit_test + process_docs("./data/jackrabbit/patch",
-#                                                        "./data/jackrabbit/" + str(i) + "/test.csv",
-#                                                        vocab)
-# for i in range(0, 6):
-#     docs_jdt_test = docs_jdt_test + process_docs("./data/jdt/patch", "./data/jdt/" + str(i) + "/test.csv",
-#                                                  vocab)
-# for i in range(0, 6):
-#     docs_lucene_test = docs_lucene_test + process_docs("./data/lucene/patch", "./data/lucene/" + str(i) + "/test.csv",
-#                                                        vocab)
-# for i in range(0, 6):
-#     docs_xorg_test = docs_xorg_test + process_docs("./data/xorg/patch", "./data/xorg/" + str(i) + "/test.csv",
-#                                                    vocab)
-#
-# # encode testing data
-# tokenizer.fit_on_texts(docs_rabbit_test)
-# rabbit_test = tokenizer.texts_to_matrix(docs_rabbit_test, mode="count")
-#
-# tokenizer.fit_on_texts(docs_jdt_test)
-# jdt_test = tokenizer.texts_to_matrix(docs_jdt_test, mode="count")
-#
-# tokenizer.fit_on_texts(docs_lucene_test)
-# lucene_test = tokenizer.texts_to_matrix(docs_lucene_test, mode="count")
-#
-# tokenizer.fit_on_texts(docs_xorg_test)
-# xorg_test = tokenizer.texts_to_matrix(docs_xorg_test, mode="count")
-
-# print("Training")
-# print(rabbit_train.shape)
-# print(jdt_train.shape)
-# print(lucene_train.shape)
-# print(xorg_train.shape)
-# print("Testing")
-# print(rabbit_test.shape)
-# print(jdt_test.shape)
-# print(lucene_test.shape)
-# print(xorg_test.shape)

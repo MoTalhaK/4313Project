@@ -28,7 +28,7 @@ def learn(file_train, file_test):
     train_data = train_data.drop('411_commit_time', axis=1)
 
     # the lables of training data. `label` is the title of the  last column in your CSV files
-    train_target = dataset.iloc[:, -1]
+    train_target = dataset.loc[:, '500_Buggy?']
 
     # load the testing data
     dataset2 = pd.read_csv(file_test, header=0)
@@ -42,7 +42,7 @@ def learn(file_train, file_test):
     test_data = test_data.drop('411_commit_time', axis=1)
 
     # the lables of test data
-    test_target = dataset2.iloc[:, -1]
+    test_target = dataset2.loc[:, '500_Buggy?']
 
     gnb = GaussianNB()
 
@@ -62,7 +62,7 @@ def learn(file_train, file_test):
 # jackrabbit
 for i in range(0, 6):
     # print("Conducting tests on set " + str(i))
-    learn("./data/jackrabbit/" + str(i) + "/train.csv", "./data/jackrabbit/" + str(i) + "/test.csv")
+    learn("./data/jackrabbit/" + str(i) + "/train_bow.csv", "./data/jackrabbit/" + str(i) + "/test_bow.csv")
 
 print("Average precision, recall, and f1-score for 'jackrabbit'\n")
 
@@ -87,7 +87,7 @@ tn_list.clear()
 # jdt
 for i in range(0, 6):
     # print("Conducting tests on set " + str(i))
-    learn("./data/jdt/" + str(i) + "/train.csv", "./data/jdt/" + str(i) + "/test.csv")
+    learn("./data/jdt/" + str(i) + "/train_bow.csv", "./data/jdt/" + str(i) + "/test_bow.csv")
 
 print("\nAverage precision, recall, and f1-score for 'jdt'\n")
 
@@ -112,7 +112,7 @@ tn_list.clear()
 # lucene
 for i in range(0, 6):
     # print("Conducting tests on set " + str(i))
-    learn("./data/lucene/" + str(i) + "/train.csv", "./data/lucene/" + str(i) + "/test.csv")
+    learn("./data/lucene/" + str(i) + "/train_bow.csv", "./data/lucene/" + str(i) + "/test_bow.csv")
 
 print("\nAverage precision, recall, and f1-score for 'lucene'\n")
 
@@ -137,7 +137,7 @@ tn_list.clear()
 # xorg
 for i in range(0, 6):
     # print("Conducting tests on set " + str(i))
-    learn("./data/xorg/" + str(i) + "/train.csv", "./data/xorg/" + str(i) + "/test.csv")
+    learn("./data/xorg/" + str(i) + "/train_bow.csv", "./data/xorg/" + str(i) + "/test_bow.csv")
 
 print("\nAverage precision, recall, and f1-score for 'xorg'\n")
 
