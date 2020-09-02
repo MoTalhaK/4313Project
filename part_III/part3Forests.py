@@ -59,7 +59,7 @@ def learn_dt(file_train, file_test, criterion, n_estimators, max_features, max_d
 
 def param_test_jr(criterion, n_estimators, max_feat, max_d):
     for i in range(0, 6):
-        learn_dt("./data/jackrabbit/" + str(i) + "/train_bow.csv", "./data/jackrabbit/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/jackrabbit/" + str(i) + "/train_bow.csv", "../data/jackrabbit/" + str(i) + "/test_bow.csv",
                  criterion=criterion, n_estimators=n_estimators, max_features=max_feat,
                  max_depth=max_d, random_state=52)
 
@@ -87,7 +87,7 @@ def param_test_jdt(criterion, n_estimators, max_feat, max_d):
     # jdt
     for i in range(0, 6):
         # print("Conducting tests on set " + str(i))
-        learn_dt("./data/jdt/" + str(i) + "/train_bow.csv", "./data/jdt/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/jdt/" + str(i) + "/train_bow.csv", "../data/jdt/" + str(i) + "/test_bow.csv",
                  criterion=criterion, n_estimators=n_estimators, max_features=max_feat,
                  max_depth=max_d, random_state=52)
 
@@ -114,7 +114,7 @@ def param_test_jdt(criterion, n_estimators, max_feat, max_d):
 def param_test_lucene(criterion, n_estimators, max_feat, max_d):
     # lucene
     for i in range(0, 6):
-        learn_dt("./data/lucene/" + str(i) + "/train_bow.csv", "./data/lucene/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/lucene/" + str(i) + "/train_bow.csv", "../data/lucene/" + str(i) + "/test_bow.csv",
                  criterion=criterion, n_estimators=n_estimators, max_features=max_feat,
                  max_depth=max_d, random_state=52)
 
@@ -142,7 +142,7 @@ def param_test_xorg(criterion, n_estimators, max_feat, max_d):
     # xorg
     for i in range(0, 6):
         # print("Conducting tests on set " + str(i))
-        learn_dt("./data/xorg/" + str(i) + "/train_bow.csv", "./data/xorg/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/xorg/" + str(i) + "/train_bow.csv", "../data/xorg/" + str(i) + "/test_bow.csv",
                  criterion=criterion, n_estimators=n_estimators, max_features=max_feat,
                  max_depth=max_d, random_state=52)
 

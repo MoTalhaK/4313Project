@@ -29,7 +29,7 @@ def learn_dt(file_train, file_test, penalty, dual, tol,
     train_data = train_data.drop('411_commit_time', axis=1)
 
     # the lables of training data. `label` is the title of the  last column in your CSV files
-    train_target = dataset.loc[:, '500_Buggy?']
+    train_target = dataset.iloc[:, -1]
 
     # load the testing data
     dataset2 = pd.read_csv(file_test, header=0)
@@ -43,7 +43,7 @@ def learn_dt(file_train, file_test, penalty, dual, tol,
     test_data = test_data.drop('411_commit_time', axis=1)
 
     # the lables of test data
-    test_target = dataset2.loc[:, '500_Buggy?']
+    test_target = dataset2.iloc[:, -1]
 
     l_regression = LogisticRegression(penalty=penalty, dual=dual, tol=tol,
                                       C=C, fit_intercept=fit_intercept, intercept_scaling=intercept_scaling,
@@ -65,7 +65,7 @@ def learn_dt(file_train, file_test, penalty, dual, tol,
 
 def param_test_jr(c_val):
     for i in range(0, 6):
-        learn_dt("./data/jackrabbit/" + str(i) + "/train_bow.csv", "./data/jackrabbit/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/jackrabbit/" + str(i) + "/train.csv", "../data/jackrabbit/" + str(i) + "/test.csv",
                  penalty='l2', dual=False, tol=0.0001, C=c_val, fit_intercept=True, intercept_scaling=1,
                  class_weight=None, random_state=30, solver='liblinear', max_iter=10000, verbose=0,
                  warm_start=False, n_jobs=None, l1_ratio=None)
@@ -93,7 +93,7 @@ def param_test_jr(c_val):
 def param_test_jdt(c_val):
     # jdt
     for i in range(0, 6):
-        learn_dt("./data/jdt/" + str(i) + "/train_bow.csv", "./data/jdt/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/jdt/" + str(i) + "/train.csv", "../data/jdt/" + str(i) + "/test.csv",
                  penalty='l2', dual=False, tol=0.0001, C=c_val, fit_intercept=True, intercept_scaling=1,
                  class_weight=None, random_state=30, solver='liblinear', max_iter=10000, verbose=0,
                  warm_start=False, n_jobs=None, l1_ratio=None)
@@ -121,7 +121,7 @@ def param_test_jdt(c_val):
 def param_test_lucene(c_val):
     # lucene
     for i in range(0, 6):
-        learn_dt("./data/lucene/" + str(i) + "/train_bow.csv", "./data/lucene/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/lucene/" + str(i) + "/train.csv", "../data/lucene/" + str(i) + "/test.csv",
                  penalty='l2', dual=False, tol=0.0001, C=c_val, fit_intercept=True, intercept_scaling=1,
                  class_weight=None, random_state=30, solver='liblinear', max_iter=10000, verbose=0,
                  warm_start=False, n_jobs=None, l1_ratio=None)
@@ -149,7 +149,7 @@ def param_test_lucene(c_val):
 def param_test_xorg(c_val):
     # xorg
     for i in range(0, 6):
-        learn_dt("./data/xorg/" + str(i) + "/train_bow.csv", "./data/xorg/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/xorg/" + str(i) + "/train.csv", "../data/xorg/" + str(i) + "/test.csv",
                  penalty='l2', dual=False, tol=0.0001, C=c_val, fit_intercept=True, intercept_scaling=1,
                  class_weight=None, random_state=30, solver='liblinear', max_iter=10000, verbose=0,
                  warm_start=False, n_jobs=None, l1_ratio=None)

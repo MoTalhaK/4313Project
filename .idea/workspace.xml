@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7f862e02-99e3-4f11-86ed-776309e02b0f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/SVM.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bow.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/jackrabbit.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/jackrabbit/patch.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/jackrabbit_change_id_mapping.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/jdt.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/jdt/patch.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/jdt_change_id_mapping.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/lucene.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/lucene/patch.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/lucene_change_id_mapping.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/xorg.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/xorg/patch.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/xorg_change_id_mapping.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dt_out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/knn.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/knn_p_val.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logistic.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logistic.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part2DTree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part2Forests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part2Logistic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part2SVM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3Bayes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3DTree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3Forests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3Logistic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3SVM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part4DTree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/part4Forests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/r_forests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/r_forests_best.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/r_forests_n_depth.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/r_forests_n_est.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/random_forests.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vocab.txt" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Project$part2.coverage" NAME="part2 Coverage Results" MODIFIED="1585195569121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part2KNN.coverage" NAME="part2KNN Coverage Results" MODIFIED="1585257196542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part2SVM.coverage" NAME="part2SVM Coverage Results" MODIFIED="1585795615456" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part2DTree.coverage" NAME="part2DTree Coverage Results" MODIFIED="1586993778460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/part_II" />
+    <SUITE FILE_PATH="coverage/Project$part3SVM.coverage" NAME="part3SVM Coverage Results" MODIFIED="1586985020906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part4DTree.coverage" NAME="part4DTree Coverage Results" MODIFIED="1586840868721" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part4SVM.coverage" NAME="part4SVM Coverage Results" MODIFIED="1586982675155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part3Logistic.coverage" NAME="part3Logistic Coverage Results" MODIFIED="1586985693874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$nb_predictor.coverage" NAME="nb_predictor Coverage Results" MODIFIED="1585195982617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/example" />
+    <SUITE FILE_PATH="coverage/Project$test_script.coverage" NAME="test_script Coverage Results" MODIFIED="1586319109613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$test.coverage" NAME="test Coverage Results" MODIFIED="1585265163414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part3DTree.coverage" NAME="part3DTree Coverage Results" MODIFIED="1586814526628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part2Forests.coverage" NAME="part2Forests Coverage Results" MODIFIED="1585784918551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part3Forests.coverage" NAME="part3Forests Coverage Results" MODIFIED="1586819356015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part3Bayes.coverage" NAME="part3Bayes Coverage Results" MODIFIED="1586987127564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$proj.coverage" NAME="proj Coverage Results" MODIFIED="1585196088482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$bow2.coverage" NAME="bow2 Coverage Results" MODIFIED="1585359384911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$bow.coverage" NAME="bow Coverage Results" MODIFIED="1586381513342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part4Forests.coverage" NAME="part4Forests Coverage Results" MODIFIED="1586991312785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part1.coverage" NAME="part1 Coverage Results" MODIFIED="1586993724635" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/part_I" />
+    <SUITE FILE_PATH="coverage/Project$part3Logistic__1_.coverage" NAME="part3Logistic (1) Coverage Results" MODIFIED="1586994064587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/part_III" />
+    <SUITE FILE_PATH="coverage/Project$part2Logistic.coverage" NAME="part2Logistic Coverage Results" MODIFIED="1585795169531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part4Logistic.coverage" NAME="part4Logistic Coverage Results" MODIFIED="1586984530193" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project$part5NN.coverage" NAME="part5NN Coverage Results" MODIFIED="1587154005054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/part_V" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Project" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/part_III/bow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="420" column="48" selection-start-line="420" selection-start-column="48" selection-end-line="420" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/part_IV/part4Logistic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1782">
+              <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/jackrabbit/0/train_bow.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" column="210" selection-start-line="12" selection-start-column="210" selection-end-line="12" selection-end-column="210" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>0.69</find>
+      <find>0.55</find>
+      <find>0</find>
+      <find>precision_avg</find>
+      <find>switch</find>
+      <find>dll</find>
+      <find>3566</find>
+      <find>curr</find>
+      <find>add_file_to_voc</find>
+      <find>./</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>../</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/proj.py" />
+        <option value="$PROJECT_DIR$/part2.py" />
+        <option value="$PROJECT_DIR$/helper.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/part2KNN.py" />
+        <option value="$PROJECT_DIR$/bow2.py" />
+        <option value="$PROJECT_DIR$/part2Forests.py" />
+        <option value="$PROJECT_DIR$/part2SVM.py" />
+        <option value="$PROJECT_DIR$/part2Logistic.py" />
+        <option value="$PROJECT_DIR$/test_script.py" />
+        <option value="$PROJECT_DIR$/part1.py" />
+        <option value="$PROJECT_DIR$/part2DTree.py" />
+        <option value="$PROJECT_DIR$/part3Forests.py" />
+        <option value="$PROJECT_DIR$/part3DTree.py" />
+        <option value="$PROJECT_DIR$/part4DTree.py" />
+        <option value="$PROJECT_DIR$/part3Bayes.py" />
+        <option value="$PROJECT_DIR$/part3SVM.py" />
+        <option value="$PROJECT_DIR$/part3Logistic.py" />
+        <option value="$PROJECT_DIR$/bow.py" />
+        <option value="$PROJECT_DIR$/part4SVM.py" />
+        <option value="$PROJECT_DIR$/part4Logistic.py" />
+        <option value="$PROJECT_DIR$/part4Forests.py" />
+        <option value="$PROJECT_DIR$/part_I/part1.py" />
+        <option value="$PROJECT_DIR$/part_II/part2DTree.py" />
+        <option value="$PROJECT_DIR$/part_II/part2Forests.py" />
+        <option value="$PROJECT_DIR$/part_II/part2Logistic.py" />
+        <option value="$PROJECT_DIR$/part_II/part2SVM.py" />
+        <option value="$PROJECT_DIR$/part_III/part3Bayes.py" />
+        <option value="$PROJECT_DIR$/part_III/part3DTree.py" />
+        <option value="$PROJECT_DIR$/part_III/part3Forests.py" />
+        <option value="$PROJECT_DIR$/part_III/part3Logistic.py" />
+        <option value="$PROJECT_DIR$/part_III/part3SVM.py" />
+        <option value="$PROJECT_DIR$/part_IV/part4DTree.py" />
+        <option value="$PROJECT_DIR$/part_IV/part4Forests.py" />
+        <option value="$PROJECT_DIR$/part_IV/part4Logistic.py" />
+        <option value="$PROJECT_DIR$/part_IV/part4SVM.py" />
+        <option value="$PROJECT_DIR$/part_III/bow.py" />
+        <option value="$PROJECT_DIR$/part_V/part5NN.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="part_IV" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="part_V" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.part5NN">
+    <configuration name="part1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/part_I" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part_I/part1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="part2DTree" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/part_II" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part_II/part2DTree.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="part3Logistic (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/part_III" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part_III/part3Logistic.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="part4Forests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part4Forests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="part5NN" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/part_V" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part_V/part5NN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.part5NN" />
+        <item itemvalue="Python.part3Logistic (1)" />
+        <item itemvalue="Python.part2DTree" />
+        <item itemvalue="Python.part1" />
+        <item itemvalue="Python.part4Forests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7f862e02-99e3-4f11-86ed-776309e02b0f" name="Default Changelist" comment="" />
+      <created>1584829542259</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584829542259</updated>
+      <workItem from="1584829550242" duration="129703000" />
+      <workItem from="1585425424341" duration="9183000" />
+      <workItem from="1585453605376" duration="46873000" />
+      <workItem from="1586299556066" duration="66141000" />
+      <workItem from="1586980179624" duration="14360000" />
+      <workItem from="1587091814717" duration="2349000" />
+      <workItem from="1587153669538" duration="622000" />
+    </task>
+    <task id="LOCAL-00001" summary="updated part 2&#10;added bag of words">
+      <created>1586376073970</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586376073970</updated>
+    </task>
+    <task id="LOCAL-00002" summary="updated part 3 and 4&#10;added bag of words">
+      <created>1586837564090</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586837564090</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="269231000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" order="0" sideWeight="0.50141644" side_tool="true" weight="0.147651" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49858356" visible="true" weight="0.15167785" />
+      <window_info id="Structure" order="2" sideWeight="0.50141644" side_tool="true" weight="0.147651" />
+      <window_info anchor="bottom" id="Database Changes" order="0" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50067115" side_tool="true" weight="0.9532578" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Python Console" order="4" weight="0.3286119" />
+      <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49932885" weight="0.9405099" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.39943343" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="SciView" order="1" weight="0.3295302" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="updated part 2&#10;added bag of words" />
+    <MESSAGE value="updated part 3 and 4&#10;added bag of words" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated part 3 and 4&#10;added bag of words" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../A2/pi/a/detector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="70" selection-start-line="70" selection-end-line="71" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/ant-1.9.2.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper.py" />
+    <entry file="file://$PROJECT_DIR$/data/jackrabbit/0/test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/jackrabbit/1/train.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bow2.py" />
+    <entry file="file://$PROJECT_DIR$/new_train.csv" />
+    <entry file="file://$PROJECT_DIR$/data/jackrabbit/0/train.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vocab.txt" />
+    <entry file="file://$PROJECT_DIR$/data/jackrabbit/1/train_bow.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_script.py" />
+    <entry file="file://$PROJECT_DIR$/test.py" />
+    <entry file="file://$PROJECT_DIR$/part2Forests.py" />
+    <entry file="file://$PROJECT_DIR$/part2SVM.py" />
+    <entry file="file://$PROJECT_DIR$/part2Logistic.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/sklearn/svm/_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="905" column="17" selection-start-line="905" selection-start-column="17" selection-end-line="905" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/jackrabbit/0/test_bow.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part3Forests.py" />
+    <entry file="file://$PROJECT_DIR$/part3SVM.py" />
+    <entry file="file://$PROJECT_DIR$/part3Logistic.py" />
+    <entry file="file://$PROJECT_DIR$/part1.py" />
+    <entry file="file://$PROJECT_DIR$/part2DTree.py" />
+    <entry file="file://$PROJECT_DIR$/part3Bayes.py" />
+    <entry file="file://$PROJECT_DIR$/part3DTree.py" />
+    <entry file="file://$PROJECT_DIR$/part4DTree.py" />
+    <entry file="file://$PROJECT_DIR$/bow.py" />
+    <entry file="file://$PROJECT_DIR$/part4Logistic.py" />
+    <entry file="file://$PROJECT_DIR$/part4SVM.py" />
+    <entry file="file://$PROJECT_DIR$/part4Forests.py" />
+    <entry file="file://$PROJECT_DIR$/part_I/part1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="156" column="15" lean-forward="true" selection-start-line="156" selection-start-column="15" selection-end-line="156" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_II/part2DTree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-946">
+          <caret line="143" column="61" selection-start-line="143" selection-start-column="61" selection-end-line="143" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_II/part2Forests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="249" column="14" lean-forward="true" selection-start-line="249" selection-start-column="14" selection-end-line="249" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_II/part2SVM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="139" column="61" selection-start-line="139" selection-start-column="61" selection-end-line="139" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_II/part2Logistic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="151" column="61" selection-start-line="151" selection-start-column="61" selection-end-line="151" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_III/part3DTree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="321" column="9" lean-forward="true" selection-start-line="321" selection-start-column="9" selection-end-line="321" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_III/part3Forests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4493">
+          <caret line="144" column="65" selection-start-line="144" selection-start-column="65" selection-end-line="144" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_III/part3SVM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-220">
+          <caret line="140" column="64" selection-start-line="140" selection-start-column="64" selection-end-line="140" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_III/part3Logistic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="172" column="19" lean-forward="true" selection-start-line="172" selection-start-column="19" selection-end-line="172" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_IV/part4DTree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-132">
+          <caret line="171" column="64" selection-start-line="171" selection-start-column="64" selection-end-line="171" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_IV/part4Forests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-176">
+          <caret line="169" column="65" selection-start-line="169" selection-start-column="65" selection-end-line="169" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_IV/part4SVM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="230" column="19" lean-forward="true" selection-start-line="230" selection-start-column="19" selection-end-line="230" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_III/part3Bayes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1936">
+          <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/nb_predictor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_IV/part4Logistic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1782">
+          <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/jackrabbit/0/train_bow.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="210" selection-start-line="12" selection-start-column="210" selection-end-line="12" selection-end-column="210" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_V/part5NN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="77" column="11" lean-forward="true" selection-start-line="77" selection-start-column="11" selection-end-line="77" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/part_III/bow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="420" column="48" selection-start-line="420" selection-start-column="48" selection-end-line="420" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,15 +1,10 @@
 from nltk.corpus import stopwords
 import nltk
-# nltk.download("stopwords")
-import string
-import numpy
-import sys
 import pandas as pd
 from os import listdir
-import os
-import shutil
-from collections import Counter
 from keras.preprocessing.text import Tokenizer
+
+nltk.download("stopwords")
 
 
 def load_doc(filename):
@@ -90,37 +85,6 @@ def save_list(lines, f_name):
     file.close()
 
 
-# filename = "./data/jackrabbit/patch/jackrabbit-35621.patch"
-# text = load_file(filename)
-# print(text)
-# tok = clean_file(text)
-# print(tok)
-
-# vocab = Counter()
-# # add all files to vocab
-# process_files("./data/jackrabbit/patch", vocab)
-# # size of vocab
-# print(len(vocab))
-# # top words
-# print(vocab.most_common(50))
-# rev_vocab = dict()
-# for key, value in vocab.items():
-#     if key == "for":
-#         rev_vocab.update({key: value})
-#         # print(key, value)
-#     if key == "if":
-#         rev_vocab.update({key: value})
-#     if key == "else":
-#         rev_vocab.update({key: value})
-#     if key == "while":
-#         rev_vocab.update({key: value})
-#     if key == "switch":
-#         rev_vocab.update({key: value})
-# print(rev_vocab)
-# save_list(rev_vocab, "vocab.txt")
-
-# use vocab.txt to generate new tokens which we will then use to form our bag of words
-
 def doc_to_line(f_name, vocab):
     file = load_file(f_name)
     tokens = clean_file(file)
@@ -144,6 +108,7 @@ def process_docs(directory, data, vocab):
     return lines
 
 
+# use vocab.txt to generate new tokens which we will then use to form our bag of words
 vocab_filename = "vocab.txt"
 vocab = load_doc(vocab_filename)
 vocab = vocab.split()
@@ -153,61 +118,61 @@ docs_jdt = list()
 docs_lucene = list()
 docs_xorg = list()
 
-jackrabbit0 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/0/train.csv", vocab)
-jackrabbit1 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/1/train.csv", vocab)
-jackrabbit2 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/2/train.csv", vocab)
-jackrabbit3 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/3/train.csv", vocab)
-jackrabbit4 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/4/train.csv", vocab)
-jackrabbit5 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/5/train.csv", vocab)
+jackrabbit0 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/0/train.csv", vocab)
+jackrabbit1 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/1/train.csv", vocab)
+jackrabbit2 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/2/train.csv", vocab)
+jackrabbit3 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/3/train.csv", vocab)
+jackrabbit4 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/4/train.csv", vocab)
+jackrabbit5 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/5/train.csv", vocab)
 
-jackrabbit_test0 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/0/test.csv", vocab)
-jackrabbit_test1 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/1/test.csv", vocab)
-jackrabbit_test2 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/2/test.csv", vocab)
-jackrabbit_test3 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/3/test.csv", vocab)
-jackrabbit_test4 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/4/test.csv", vocab)
-jackrabbit_test5 = process_docs("./data/jackrabbit/patch", "./data/jackrabbit/5/test.csv", vocab)
+jackrabbit_test0 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/0/test.csv", vocab)
+jackrabbit_test1 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/1/test.csv", vocab)
+jackrabbit_test2 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/2/test.csv", vocab)
+jackrabbit_test3 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/3/test.csv", vocab)
+jackrabbit_test4 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/4/test.csv", vocab)
+jackrabbit_test5 = process_docs("../data/jackrabbit/patch", "../data/jackrabbit/5/test.csv", vocab)
 
-jdt0 = process_docs("./data/jdt/patch", "./data/jdt/0/train.csv", vocab)
-jdt1 = process_docs("./data/jdt/patch", "./data/jdt/1/train.csv", vocab)
-jdt2 = process_docs("./data/jdt/patch", "./data/jdt/2/train.csv", vocab)
-jdt3 = process_docs("./data/jdt/patch", "./data/jdt/3/train.csv", vocab)
-jdt4 = process_docs("./data/jdt/patch", "./data/jdt/4/train.csv", vocab)
-jdt5 = process_docs("./data/jdt/patch", "./data/jdt/5/train.csv", vocab)
+jdt0 = process_docs("../data/jdt/patch", "../data/jdt/0/train.csv", vocab)
+jdt1 = process_docs("../data/jdt/patch", "../data/jdt/1/train.csv", vocab)
+jdt2 = process_docs("../data/jdt/patch", "../data/jdt/2/train.csv", vocab)
+jdt3 = process_docs("../data/jdt/patch", "../data/jdt/3/train.csv", vocab)
+jdt4 = process_docs("../data/jdt/patch", "../data/jdt/4/train.csv", vocab)
+jdt5 = process_docs("../data/jdt/patch", "../data/jdt/5/train.csv", vocab)
 
-jdt_test0_docs = process_docs("./data/jdt/patch", "./data/jdt/0/test.csv", vocab)
-jdt_test1_docs = process_docs("./data/jdt/patch", "./data/jdt/1/test.csv", vocab)
-jdt_test2_docs = process_docs("./data/jdt/patch", "./data/jdt/2/test.csv", vocab)
-jdt_test3_docs = process_docs("./data/jdt/patch", "./data/jdt/3/test.csv", vocab)
-jdt_test4_docs = process_docs("./data/jdt/patch", "./data/jdt/4/test.csv", vocab)
-jdt_test5_docs = process_docs("./data/jdt/patch", "./data/jdt/5/test.csv", vocab)
+jdt_test0_docs = process_docs("../data/jdt/patch", "../data/jdt/0/test.csv", vocab)
+jdt_test1_docs = process_docs("../data/jdt/patch", "../data/jdt/1/test.csv", vocab)
+jdt_test2_docs = process_docs("../data/jdt/patch", "../data/jdt/2/test.csv", vocab)
+jdt_test3_docs = process_docs("../data/jdt/patch", "../data/jdt/3/test.csv", vocab)
+jdt_test4_docs = process_docs("../data/jdt/patch", "../data/jdt/4/test.csv", vocab)
+jdt_test5_docs = process_docs("../data/jdt/patch", "../data/jdt/5/test.csv", vocab)
 
-lucene0 = process_docs("./data/lucene/patch", "./data/lucene/0/train.csv", vocab)
-lucene1 = process_docs("./data/lucene/patch", "./data/lucene/1/train.csv", vocab)
-lucene2 = process_docs("./data/lucene/patch", "./data/lucene/2/train.csv", vocab)
-lucene3 = process_docs("./data/lucene/patch", "./data/lucene/3/train.csv", vocab)
-lucene4 = process_docs("./data/lucene/patch", "./data/lucene/4/train.csv", vocab)
-lucene5 = process_docs("./data/lucene/patch", "./data/lucene/5/train.csv", vocab)
+lucene0 = process_docs("../data/lucene/patch", "../data/lucene/0/train.csv", vocab)
+lucene1 = process_docs("../data/lucene/patch", "../data/lucene/1/train.csv", vocab)
+lucene2 = process_docs("../data/lucene/patch", "../data/lucene/2/train.csv", vocab)
+lucene3 = process_docs("../data/lucene/patch", "../data/lucene/3/train.csv", vocab)
+lucene4 = process_docs("../data/lucene/patch", "../data/lucene/4/train.csv", vocab)
+lucene5 = process_docs("../data/lucene/patch", "../data/lucene/5/train.csv", vocab)
 
-lucene_test0_docs = process_docs("./data/lucene/patch", "./data/lucene/0/test.csv", vocab)
-lucene_test1_docs = process_docs("./data/lucene/patch", "./data/lucene/1/test.csv", vocab)
-lucene_test2_docs = process_docs("./data/lucene/patch", "./data/lucene/2/test.csv", vocab)
-lucene_test3_docs = process_docs("./data/lucene/patch", "./data/lucene/3/test.csv", vocab)
-lucene_test4_docs = process_docs("./data/lucene/patch", "./data/lucene/4/test.csv", vocab)
-lucene_test5_docs = process_docs("./data/lucene/patch", "./data/lucene/5/test.csv", vocab)
+lucene_test0_docs = process_docs("../data/lucene/patch", "../data/lucene/0/test.csv", vocab)
+lucene_test1_docs = process_docs("../data/lucene/patch", "../data/lucene/1/test.csv", vocab)
+lucene_test2_docs = process_docs("../data/lucene/patch", "../data/lucene/2/test.csv", vocab)
+lucene_test3_docs = process_docs("../data/lucene/patch", "../data/lucene/3/test.csv", vocab)
+lucene_test4_docs = process_docs("../data/lucene/patch", "../data/lucene/4/test.csv", vocab)
+lucene_test5_docs = process_docs("../data/lucene/patch", "../data/lucene/5/test.csv", vocab)
 
-xorg0 = process_docs("./data/xorg/patch", "./data/xorg/0/train.csv", vocab)
-xorg1 = process_docs("./data/xorg/patch", "./data/xorg/1/train.csv", vocab)
-xorg2 = process_docs("./data/xorg/patch", "./data/xorg/2/train.csv", vocab)
-xorg3 = process_docs("./data/xorg/patch", "./data/xorg/3/train.csv", vocab)
-xorg4 = process_docs("./data/xorg/patch", "./data/xorg/4/train.csv", vocab)
-xorg5 = process_docs("./data/xorg/patch", "./data/xorg/5/train.csv", vocab)
+xorg0 = process_docs("../data/xorg/patch", "../data/xorg/0/train.csv", vocab)
+xorg1 = process_docs("../data/xorg/patch", "../data/xorg/1/train.csv", vocab)
+xorg2 = process_docs("../data/xorg/patch", "../data/xorg/2/train.csv", vocab)
+xorg3 = process_docs("../data/xorg/patch", "../data/xorg/3/train.csv", vocab)
+xorg4 = process_docs("../data/xorg/patch", "../data/xorg/4/train.csv", vocab)
+xorg5 = process_docs("../data/xorg/patch", "../data/xorg/5/train.csv", vocab)
 
-xorg_test0_docs = process_docs("./data/xorg/patch", "./data/xorg/0/test.csv", vocab)
-xorg_test1_docs = process_docs("./data/xorg/patch", "./data/xorg/1/test.csv", vocab)
-xorg_test2_docs = process_docs("./data/xorg/patch", "./data/xorg/2/test.csv", vocab)
-xorg_test3_docs = process_docs("./data/xorg/patch", "./data/xorg/3/test.csv", vocab)
-xorg_test4_docs = process_docs("./data/xorg/patch", "./data/xorg/4/test.csv", vocab)
-xorg_test5_docs = process_docs("./data/xorg/patch", "./data/xorg/5/test.csv", vocab)
+xorg_test0_docs = process_docs("../data/xorg/patch", "../data/xorg/0/test.csv", vocab)
+xorg_test1_docs = process_docs("../data/xorg/patch", "../data/xorg/1/test.csv", vocab)
+xorg_test2_docs = process_docs("../data/xorg/patch", "../data/xorg/2/test.csv", vocab)
+xorg_test3_docs = process_docs("../data/xorg/patch", "../data/xorg/3/test.csv", vocab)
+xorg_test4_docs = process_docs("../data/xorg/patch", "../data/xorg/4/test.csv", vocab)
+xorg_test5_docs = process_docs("../data/xorg/patch", "../data/xorg/5/test.csv", vocab)
 
 tokenizer = Tokenizer()
 
@@ -215,6 +180,7 @@ docs_rabbit_test = list()
 docs_jdt_test = list()
 docs_lucene_test = list()
 docs_xorg_test = list()
+
 
 # tokenize the output obtained from 'process_docs' and
 # get count of our specified vocabulary (if, for, else, while, switch) and
@@ -281,61 +247,61 @@ xorg_test4 = return_matrix(xorg_test4_docs)
 xorg_test5 = return_matrix(xorg_test5_docs)
 
 ############################################################
-jrtrain0 = pd.read_csv("./data/jackrabbit/0/train.csv")
-jrtrain1 = pd.read_csv("./data/jackrabbit/1/train.csv")
-jrtrain2 = pd.read_csv("./data/jackrabbit/2/train.csv")
-jrtrain3 = pd.read_csv("./data/jackrabbit/3/train.csv")
-jrtrain4 = pd.read_csv("./data/jackrabbit/4/train.csv")
-jrtrain5 = pd.read_csv("./data/jackrabbit/5/train.csv")
+jrtrain0 = pd.read_csv("../data/jackrabbit/0/train.csv")
+jrtrain1 = pd.read_csv("../data/jackrabbit/1/train.csv")
+jrtrain2 = pd.read_csv("../data/jackrabbit/2/train.csv")
+jrtrain3 = pd.read_csv("../data/jackrabbit/3/train.csv")
+jrtrain4 = pd.read_csv("../data/jackrabbit/4/train.csv")
+jrtrain5 = pd.read_csv("../data/jackrabbit/5/train.csv")
 
-jrtest0 = pd.read_csv("./data/jackrabbit/0/test.csv")
-jrtest1 = pd.read_csv("./data/jackrabbit/1/test.csv")
-jrtest2 = pd.read_csv("./data/jackrabbit/2/test.csv")
-jrtest3 = pd.read_csv("./data/jackrabbit/3/test.csv")
-jrtest4 = pd.read_csv("./data/jackrabbit/4/test.csv")
-jrtest5 = pd.read_csv("./data/jackrabbit/5/test.csv")
+jrtest0 = pd.read_csv("../data/jackrabbit/0/test.csv")
+jrtest1 = pd.read_csv("../data/jackrabbit/1/test.csv")
+jrtest2 = pd.read_csv("../data/jackrabbit/2/test.csv")
+jrtest3 = pd.read_csv("../data/jackrabbit/3/test.csv")
+jrtest4 = pd.read_csv("../data/jackrabbit/4/test.csv")
+jrtest5 = pd.read_csv("../data/jackrabbit/5/test.csv")
 
-jdtrain0 = pd.read_csv("./data/jdt/0/train.csv")
-jdtrain1 = pd.read_csv("./data/jdt/1/train.csv")
-jdtrain2 = pd.read_csv("./data/jdt/2/train.csv")
-jdtrain3 = pd.read_csv("./data/jdt/3/train.csv")
-jdtrain4 = pd.read_csv("./data/jdt/4/train.csv")
-jdtrain5 = pd.read_csv("./data/jdt/5/train.csv")
+jdtrain0 = pd.read_csv("../data/jdt/0/train.csv")
+jdtrain1 = pd.read_csv("../data/jdt/1/train.csv")
+jdtrain2 = pd.read_csv("../data/jdt/2/train.csv")
+jdtrain3 = pd.read_csv("../data/jdt/3/train.csv")
+jdtrain4 = pd.read_csv("../data/jdt/4/train.csv")
+jdtrain5 = pd.read_csv("../data/jdt/5/train.csv")
 
-jdtest0 = pd.read_csv("./data/jdt/0/test.csv")
-jdtest1 = pd.read_csv("./data/jdt/1/test.csv")
-jdtest2 = pd.read_csv("./data/jdt/2/test.csv")
-jdtest3 = pd.read_csv("./data/jdt/3/test.csv")
-jdtest4 = pd.read_csv("./data/jdt/4/test.csv")
-jdtest5 = pd.read_csv("./data/jdt/5/test.csv")
+jdtest0 = pd.read_csv("../data/jdt/0/test.csv")
+jdtest1 = pd.read_csv("../data/jdt/1/test.csv")
+jdtest2 = pd.read_csv("../data/jdt/2/test.csv")
+jdtest3 = pd.read_csv("../data/jdt/3/test.csv")
+jdtest4 = pd.read_csv("../data/jdt/4/test.csv")
+jdtest5 = pd.read_csv("../data/jdt/5/test.csv")
 
-luctrain0 = pd.read_csv("./data/lucene/0/train.csv")
-luctrain1 = pd.read_csv("./data/lucene/1/train.csv")
-luctrain2 = pd.read_csv("./data/lucene/2/train.csv")
-luctrain3 = pd.read_csv("./data/lucene/3/train.csv")
-luctrain4 = pd.read_csv("./data/lucene/4/train.csv")
-luctrain5 = pd.read_csv("./data/lucene/5/train.csv")
+luctrain0 = pd.read_csv("../data/lucene/0/train.csv")
+luctrain1 = pd.read_csv("../data/lucene/1/train.csv")
+luctrain2 = pd.read_csv("../data/lucene/2/train.csv")
+luctrain3 = pd.read_csv("../data/lucene/3/train.csv")
+luctrain4 = pd.read_csv("../data/lucene/4/train.csv")
+luctrain5 = pd.read_csv("../data/lucene/5/train.csv")
 
-luctest0 = pd.read_csv("./data/lucene/0/test.csv")
-luctest1 = pd.read_csv("./data/lucene/1/test.csv")
-luctest2 = pd.read_csv("./data/lucene/2/test.csv")
-luctest3 = pd.read_csv("./data/lucene/3/test.csv")
-luctest4 = pd.read_csv("./data/lucene/4/test.csv")
-luctest5 = pd.read_csv("./data/lucene/5/test.csv")
+luctest0 = pd.read_csv("../data/lucene/0/test.csv")
+luctest1 = pd.read_csv("../data/lucene/1/test.csv")
+luctest2 = pd.read_csv("../data/lucene/2/test.csv")
+luctest3 = pd.read_csv("../data/lucene/3/test.csv")
+luctest4 = pd.read_csv("../data/lucene/4/test.csv")
+luctest5 = pd.read_csv("../data/lucene/5/test.csv")
 
-xtrain0 = pd.read_csv("./data/xorg/0/train.csv")
-xtrain1 = pd.read_csv("./data/xorg/1/train.csv")
-xtrain2 = pd.read_csv("./data/xorg/2/train.csv")
-xtrain3 = pd.read_csv("./data/xorg/3/train.csv")
-xtrain4 = pd.read_csv("./data/xorg/4/train.csv")
-xtrain5 = pd.read_csv("./data/xorg/5/train.csv")
+xtrain0 = pd.read_csv("../data/xorg/0/train.csv")
+xtrain1 = pd.read_csv("../data/xorg/1/train.csv")
+xtrain2 = pd.read_csv("../data/xorg/2/train.csv")
+xtrain3 = pd.read_csv("../data/xorg/3/train.csv")
+xtrain4 = pd.read_csv("../data/xorg/4/train.csv")
+xtrain5 = pd.read_csv("../data/xorg/5/train.csv")
 
-xtest0 = pd.read_csv("./data/xorg/0/test.csv")
-xtest1 = pd.read_csv("./data/xorg/1/test.csv")
-xtest2 = pd.read_csv("./data/xorg/2/test.csv")
-xtest3 = pd.read_csv("./data/xorg/3/test.csv")
-xtest4 = pd.read_csv("./data/xorg/4/test.csv")
-xtest5 = pd.read_csv("./data/xorg/5/test.csv")
+xtest0 = pd.read_csv("../data/xorg/0/test.csv")
+xtest1 = pd.read_csv("../data/xorg/1/test.csv")
+xtest2 = pd.read_csv("../data/xorg/2/test.csv")
+xtest3 = pd.read_csv("../data/xorg/3/test.csv")
+xtest4 = pd.read_csv("../data/xorg/4/test.csv")
+xtest5 = pd.read_csv("../data/xorg/5/test.csv")
 
 # number of if-statements
 num_if = list()
@@ -438,21 +404,21 @@ xorgtestcsv5 = add_to_csv(xorg_test5, xtest5)
 def output_csv(file, fold, flag, type):
     path = ""
     if flag == "jr" and type == "train":
-        path = "./data/jackrabbit/" + str(fold) + "/train_bow.csv"
+        path = "../data/jackrabbit/" + str(fold) + "/train_bow.csv"
     if flag == "jr" and type == "test":
-        path = "./data/jackrabbit/" + str(fold) + "/test_bow.csv"
+        path = "../data/jackrabbit/" + str(fold) + "/test_bow.csv"
     if flag == "jdt" and type == "train":
-        path = "./data/jdt/" + str(fold) + "/train_bow.csv"
+        path = "../data/jdt/" + str(fold) + "/train_bow.csv"
     if flag == "jdt" and type == "test":
-        path = "./data/jdt/" + str(fold) + "/test_bow.csv"
+        path = "../data/jdt/" + str(fold) + "/test_bow.csv"
     if flag == "lucene" and type == "train":
-        path = "./data/lucene/" + str(fold) + "/train_bow.csv"
+        path = "../data/lucene/" + str(fold) + "/train_bow.csv"
     if flag == "lucene" and type == "test":
-        path = "./data/lucene/" + str(fold) + "/test_bow.csv"
+        path = "../data/lucene/" + str(fold) + "/test_bow.csv"
     if flag == "xorg" and type == "train":
-        path = "./data/xorg/" + str(fold) + "/train_bow.csv"
+        path = "../data/xorg/" + str(fold) + "/train_bow.csv"
     if flag == "xorg" and type == "test":
-        path = "./data/xorg/" + str(fold) + "/test_bow.csv"
+        path = "../data/xorg/" + str(fold) + "/test_bow.csv"
     file.to_csv(path, index=False)
 
 

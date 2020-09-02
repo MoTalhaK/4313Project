@@ -59,7 +59,7 @@ def learn_dt(file_train, file_test, criterion, max_features, max_depth, random_s
 
 def param_test_jr(criterion, max_feat, max_d):
     for i in range(0, 6):
-        learn_dt("./data/jackrabbit/" + str(i) + "/train_bow.csv", "./data/jackrabbit/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/jackrabbit/" + str(i) + "/train_bow.csv", "../data/jackrabbit/" + str(i) + "/test_bow.csv",
                  criterion=criterion, max_features=max_feat, max_depth=max_d,
                  random_state=22)
 
@@ -87,7 +87,7 @@ def param_test_jdt(criterion, max_feat, max_d):
     # jdt
     for i in range(0, 6):
         # print("Conducting tests on set " + str(i))
-        learn_dt("./data/jdt/" + str(i) + "/train_bow.csv", "./data/jdt/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/jdt/" + str(i) + "/train_bow.csv", "../data/jdt/" + str(i) + "/test_bow.csv",
                  criterion=criterion, max_features=max_feat, max_depth=max_d,
                  random_state=22)
 
@@ -114,7 +114,7 @@ def param_test_jdt(criterion, max_feat, max_d):
 def param_test_lucene(criterion, max_feat, max_d):
     # lucene
     for i in range(0, 6):
-        learn_dt("./data/lucene/" + str(i) + "/train_bow.csv", "./data/lucene/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/lucene/" + str(i) + "/train_bow.csv", "../data/lucene/" + str(i) + "/test_bow.csv",
                  criterion=criterion, max_features=max_feat, max_depth=max_d,
                  random_state=22)
 
@@ -142,7 +142,7 @@ def param_test_xorg(criterion, max_feat, max_d):
     # xorg
     for i in range(0, 6):
         # print("Conducting tests on set " + str(i))
-        learn_dt("./data/xorg/" + str(i) + "/train_bow.csv", "./data/xorg/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/xorg/" + str(i) + "/train_bow.csv", "../data/xorg/" + str(i) + "/test_bow.csv",
                  criterion=criterion, max_features=max_feat, max_depth=max_d,
                  random_state=22)
 
@@ -186,97 +186,97 @@ def to_doc(d_frame):
 n_depth = [1, 2, 5, 8, 10, 20, 30, 50, 80, 100]
 n_feat = [1, 3, 5, 8, 10, 12, 13, 14, 15, 16]
 
-# doc.add_paragraph("Using Gini")
-# print("Using Gini...")
-# print("jackrabbit\n")
-# for x in n_depth:
-#     param_test_jr("gini", None, x)
-# df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
-#                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
-# to_doc(df)
-# print(df)
-# f1_list.clear()
-# p_list.clear()
-# r_list.clear()
+doc.add_paragraph("Using Gini")
+print("Using Gini...")
+print("jackrabbit\n")
+for x in n_depth:
+    param_test_jr("gini", None, x)
+df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
+                  columns=["max_depth", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df)
+f1_list.clear()
+p_list.clear()
+r_list.clear()
+
+print("jdt\n")
+for x in n_depth:
+    param_test_jdt("gini", None, x)
+df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
+                  columns=["max_depth", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df)
+f1_list.clear()
+p_list.clear()
+r_list.clear()
+
+print("lucene\n")
+for x in n_depth:
+    param_test_lucene("gini", None, x)
+df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
+                  columns=["max_depth", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df)
+f1_list.clear()
+p_list.clear()
+r_list.clear()
+
+print("xorg\n")
+for x in n_depth:
+    param_test_xorg("gini", None, x)
+df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
+                  columns=["max_depth", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df)
+f1_list.clear()
+p_list.clear()
+r_list.clear()
 #
-# print("jdt\n")
-# for x in n_depth:
-#     param_test_jdt("gini", None, x)
-# df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
-#                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
-# to_doc(df)
-# print(df)
-# f1_list.clear()
-# p_list.clear()
-# r_list.clear()
-#
-# print("lucene\n")
-# for x in n_depth:
-#     param_test_lucene("gini", None, x)
-# df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
-#                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
-# to_doc(df)
-# print(df)
-# f1_list.clear()
-# p_list.clear()
-# r_list.clear()
-#
-# print("xorg\n")
-# for x in n_depth:
-#     param_test_xorg("gini", None, x)
-# df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
-#                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
-# to_doc(df)
-# print(df)
-# f1_list.clear()
-# p_list.clear()
-# r_list.clear()
-#
-# doc.add_paragraph("Using Entropy")
-# print("Using Entropy...\n")
-# print("jackrabbit\n")
-# for x in n_depth:
-#     param_test_jr("entropy", None, x)
-# df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
-#                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
-# to_doc(df)
-# print(df)
-# f1_list.clear()
-# p_list.clear()
-# r_list.clear()
-#
-# print("jdt\n")
-# for x in n_depth:
-#     param_test_jdt("entropy", None, x)
-# df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
-#                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
-# to_doc(df)
-# print(df)
-# f1_list.clear()
-# p_list.clear()
-# r_list.clear()
-#
-# print("lucene\n")
-# for x in n_depth:
-#     param_test_lucene("entropy", None, x)
-# df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
-#                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
-# to_doc(df)
-# print(df)
-# f1_list.clear()
-# p_list.clear()
-# r_list.clear()
-#
-# print("xorg\n")
-# for x in n_depth:
-#     param_test_xorg("entropy", None, x)
-# df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
-#                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
-# to_doc(df)
-# print(df)
-# f1_list.clear()
-# p_list.clear()
-# r_list.clear()
+doc.add_paragraph("Using Entropy")
+print("Using Entropy...\n")
+print("jackrabbit\n")
+for x in n_depth:
+    param_test_jr("entropy", None, x)
+df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
+                  columns=["max_depth", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df)
+f1_list.clear()
+p_list.clear()
+r_list.clear()
+
+print("jdt\n")
+for x in n_depth:
+    param_test_jdt("entropy", None, x)
+df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
+                  columns=["max_depth", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df)
+f1_list.clear()
+p_list.clear()
+r_list.clear()
+
+print("lucene\n")
+for x in n_depth:
+    param_test_lucene("entropy", None, x)
+df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
+                  columns=["max_depth", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df)
+f1_list.clear()
+p_list.clear()
+r_list.clear()
+
+print("xorg\n")
+for x in n_depth:
+    param_test_xorg("entropy", None, x)
+df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
+                  columns=["max_depth", "Precision", "Recall", "F1-Score"])
+to_doc(df)
+print(df)
+f1_list.clear()
+p_list.clear()
+r_list.clear()
 
 doc.add_paragraph("Using Criterion = 'gini' to find max features")
 print("Using Criterion = 'gini' to find max features...\n")
@@ -323,9 +323,3 @@ print(df)
 f1_list.clear()
 p_list.clear()
 r_list.clear()
-
-# param_test_jr("gini", 13, 10)
-# df = pd.DataFrame(list(zip(n_feat, p_list, r_list, f1_list)),
-#                   columns=["max_feat", "Precision", "Recall", "F1-Score"])
-# to_doc(df)
-# print(df)

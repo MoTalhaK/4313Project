@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 import docx
 from sklearn.ensemble import RandomForestClassifier
@@ -26,7 +27,7 @@ def learn_dt(file_train, file_test, criterion, n_estimators, max_features, max_d
     train_data = train_data.drop('411_commit_time', axis=1)
 
     # the lables of training data. `label` is the title of the  last column in your CSV files
-    train_target = dataset.loc[:, '500_Buggy?']
+    train_target = dataset.iloc[:, -1]
 
     # load the testing data
     dataset2 = pd.read_csv(file_test, header=0)
@@ -40,7 +41,7 @@ def learn_dt(file_train, file_test, criterion, n_estimators, max_features, max_d
     test_data = test_data.drop('411_commit_time', axis=1)
 
     # the lables of test data
-    test_target = dataset2.loc[:, '500_Buggy?']
+    test_target = dataset2.iloc[:, -1]
 
     r_forests = RandomForestClassifier(criterion=criterion, n_estimators=n_estimators, max_features=max_features,
                                        max_depth=max_depth, random_state=random_state)
@@ -59,7 +60,7 @@ def learn_dt(file_train, file_test, criterion, n_estimators, max_features, max_d
 
 def param_test_jr(criterion, n_estimators, max_feat, max_d):
     for i in range(0, 6):
-        learn_dt("./data/jackrabbit/" + str(i) + "/train_bow.csv", "./data/jackrabbit/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/jackrabbit/" + str(i) + "/train.csv", "../data/jackrabbit/" + str(i) + "/test.csv",
                  criterion=criterion, n_estimators=n_estimators, max_features=max_feat,
                  max_depth=max_d, random_state=52)
 
@@ -87,7 +88,7 @@ def param_test_jdt(criterion, n_estimators, max_feat, max_d):
     # jdt
     for i in range(0, 6):
         # print("Conducting tests on set " + str(i))
-        learn_dt("./data/jdt/" + str(i) + "/train_bow.csv", "./data/jdt/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/jdt/" + str(i) + "/train.csv", "../data/jdt/" + str(i) + "/test.csv",
                  criterion=criterion, n_estimators=n_estimators, max_features=max_feat,
                  max_depth=max_d, random_state=52)
 
@@ -114,7 +115,7 @@ def param_test_jdt(criterion, n_estimators, max_feat, max_d):
 def param_test_lucene(criterion, n_estimators, max_feat, max_d):
     # lucene
     for i in range(0, 6):
-        learn_dt("./data/lucene/" + str(i) + "/train_bow.csv", "./data/lucene/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/lucene/" + str(i) + "/train.csv", "../data/lucene/" + str(i) + "/test.csv",
                  criterion=criterion, n_estimators=n_estimators, max_features=max_feat,
                  max_depth=max_d, random_state=52)
 
@@ -142,7 +143,7 @@ def param_test_xorg(criterion, n_estimators, max_feat, max_d):
     # xorg
     for i in range(0, 6):
         # print("Conducting tests on set " + str(i))
-        learn_dt("./data/xorg/" + str(i) + "/train_bow.csv", "./data/xorg/" + str(i) + "/test_bow.csv",
+        learn_dt("../data/xorg/" + str(i) + "/train.csv", "../data/xorg/" + str(i) + "/test.csv",
                  criterion=criterion, n_estimators=n_estimators, max_features=max_feat,
                  max_depth=max_d, random_state=52)
 
@@ -279,11 +280,11 @@ f1_list.clear()
 p_list.clear()
 r_list.clear()
 
-doc.add_paragraph("Using Criterion = 'entropy' and n_estimators = 80 to find max depth...")
-print("Using Criterion = 'entropy' and n_estimators = 80 to find max depth...\n")
+doc.add_paragraph("Using Criterion = 'gini' and n_estimators = 20 to find max depth...")
+print("Using Criterion = 'gini' and n_estimators = 20 to find max depth...\n")
 print("jackrabbit\n")
 for x in n_depth:
-    param_test_jr("entropy", 80, None, x)
+    param_test_jr("gini", 20, None, x)
 df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
 to_doc(df)
@@ -294,7 +295,7 @@ r_list.clear()
 
 print("jdt\n")
 for x in n_depth:
-    param_test_jdt("entropy", 80, None, x)
+    param_test_jdt("gini", 20, None, x)
 df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
 to_doc(df)
@@ -305,7 +306,7 @@ r_list.clear()
 
 print("lucene\n")
 for x in n_depth:
-    param_test_lucene("entropy", 80, None, x)
+    param_test_lucene("gini", 20, None, x)
 df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
 to_doc(df)
@@ -316,7 +317,7 @@ r_list.clear()
 
 print("xorg\n")
 for x in n_depth:
-    param_test_xorg("entropy", 80, None, x)
+    param_test_xorg("gini", 20, None, x)
 df = pd.DataFrame(list(zip(n_depth, p_list, r_list, f1_list)),
                   columns=["max_depth", "Precision", "Recall", "F1-Score"])
 to_doc(df)
@@ -324,12 +325,12 @@ print(df)
 f1_list.clear()
 p_list.clear()
 r_list.clear()
-#
-print("Using Criterion = 'entropy', n_estimators = 80 and max_depth = 30 to find max features...\n")
+
+print("Using Criterion = 'gini', n_estimators = 20 and max_depth = 10 to find max features...\n")
 doc.add_paragraph("Using Criterion = 'gini', n_estimators = 20 and max_depth = 10 to find max features...")
 print("jackrabbit\n")
 for x in n_feat:
-    param_test_jr("entropy", 80, x, 30)
+    param_test_jr("gini", 20, x, 10)
 df = pd.DataFrame(list(zip(n_feat, p_list, r_list, f1_list)),
                   columns=["max_feat", "Precision", "Recall", "F1-Score"])
 to_doc(df)
@@ -340,7 +341,7 @@ r_list.clear()
 
 print("jdt\n")
 for x in n_feat:
-    param_test_jdt("entropy", 80, x, 30)
+    param_test_jdt("gini", 20, x, 10)
 df = pd.DataFrame(list(zip(n_feat, p_list, r_list, f1_list)),
                   columns=["max_feat", "Precision", "Recall", "F1-Score"])
 to_doc(df)
@@ -351,7 +352,7 @@ r_list.clear()
 
 print("lucene\n")
 for x in n_feat:
-    param_test_lucene("entropy", 80, x, 30)
+    param_test_lucene("gini", 20, x, 10)
 df = pd.DataFrame(list(zip(n_feat, p_list, r_list, f1_list)),
                   columns=["max_feat", "Precision", "Recall", "F1-Score"])
 to_doc(df)
@@ -362,7 +363,7 @@ r_list.clear()
 
 print("xorg\n")
 for x in n_feat:
-    param_test_xorg("entropy", 80, x, 30)
+    param_test_xorg("gini", 20, x, 10)
 df = pd.DataFrame(list(zip(n_feat, p_list, r_list, f1_list)),
                   columns=["max_feat", "Precision", "Recall", "F1-Score"])
 to_doc(df)
